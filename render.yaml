@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: rentease
+    runtime: node
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DEVELOPER_EMAIL
+        sync: false
+      - key: DEVELOPER_PASSWORD
+        sync: false
+      - key: CLOUDINARY_CREDENTIALS_KEY
+        sync: false
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: TRUST_PROXY
+        value: "1"
